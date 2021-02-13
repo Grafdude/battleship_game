@@ -1,0 +1,85 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing:border-box;
+    font-family: 'Dosis', sans-serif;
+}
+
+body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.6rem;
+    box-sizing: inherit;
+}
+
+#board {
+    width: 102.4rem;
+    height: 86.3rem;
+    background: url("img/board.jpg") no-repeat;
+    position: relative;
+}
+
+.row-container {
+    margin: 9.5rem 0 0 16rem;
+}
+
+.row {
+    display: flex;   
+}
+
+.row > * {
+    width: 9rem;
+    height: 9rem;
+    /* border: 2px solid greenyellow; */
+}
+
+form {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+}
+
+form input {
+    background-color: rgb(83, 175, 19);
+    font-family: inherit;
+    padding: 1rem;
+    font-size: 2.2rem;
+    font-weight: bold;
+    border: none;
+}
+
+button {
+    padding: 1rem;
+    font-family: inherit;
+    font-size: 2.2rem;
+    font-weight: bold;
+    background: orangered;
+    border: none;
+}
+
+#messageArea {
+    color: greenyellow;
+    font-size: 2.8rem;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+
+.hit {
+    background: url("img/ship.png") no-repeat center center;
+}
+
+.miss {
+    background: url("img/miss.png") no-repeat center center;
+}
+
