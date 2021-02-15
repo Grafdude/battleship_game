@@ -22,16 +22,16 @@ body {
 }
 
 #board {
-    width: 102.4rem;
-    height: 86.3rem;
+    width: 1024px;
+    height: 863px;
     background: url("img/board.jpg") no-repeat;
     position: relative;
 }
 
 .row-container {
     position: absolute;
-    top: 10rem;
-    left: 17rem;
+    top: 98px;
+    left: 173px;
 }
 
 .row {
@@ -39,8 +39,8 @@ body {
 }
 
 .row > * {
-    width: 9.4rem;
-    height: 9.4rem;
+    width: 95px;
+    height: 97px;
     /* border: 2px solid greenyellow; */
 }
 
@@ -73,8 +73,8 @@ button {
     color: greenyellow;
     font-size: 2.8rem;
     position: absolute;
-    top: 2rem;
-    left: 2rem;
+    top: 20px;
+    left: 20px;
 }
 
 .hit {
