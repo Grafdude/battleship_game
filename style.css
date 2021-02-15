@@ -29,7 +29,9 @@ body {
 }
 
 .row-container {
-    margin: 9.5rem 0 0 16rem;
+    position: absolute;
+    top: 10rem;
+    left: 17rem;
 }
 
 .row {
@@ -37,8 +39,8 @@ body {
 }
 
 .row > * {
-    width: 9rem;
-    height: 9rem;
+    width: 9.4rem;
+    height: 9.4rem;
     /* border: 2px solid greenyellow; */
 }
 
