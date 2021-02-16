@@ -8,7 +8,7 @@ const view = {
 
     displayHit: function(location) {
         let cell = document.getElementById(location);
-        cell.classList.add("hit");
+        cell.setAttribute("class", "hit");
     },
 
     displayMiss: function(location) {
@@ -19,14 +19,60 @@ const view = {
 }
 
 const model = {
+
+    generateShipLocations: function() {
+        let locations;
+        for (let i = 0; i < this.numShips; i++) {
+            do {
+                locations = this.generateShip();
+            } while (this.collision(locations));
+            this.ships[i].locations = locations;
+        }
+    },
+
+    collision: function(locations) {
+        for (let i = 0; i < this.numShips; i++) {
+            let ship = model.ships[i];
+            for (let j = 0; j < locations.length; j++) {
+                if (ship.locations.indexOf(locations[j]) >= 0) {
+                    return true;
+                }
+            }
+        }
+        return false; //if no collision
+    },
+
+    generateShip: function() {
+        let direction = Math.floor(Math.random() * 2);
+        let row, col;
+
+        if (direction === 1) {
+            row = Math.floor(Math.random() * this.boardSize);
+            col = Math.floor(Math.random() * (this.boardSize - this.shipLength));
+        } else {
+            row = Math.floor(Math.random() * (this.boardSize - this.shipLength));
+            col = Math.floor(Math.random() * this.boardSize);
+        }
+
+        let newShipLocations = [];
+        for (let i = 0; i < this.shipLength; i++) {
+            if (direction === 1) {
+                newShipLocations.push(row + "" + (col + i));    
+            } else {
+                newShipLocations.push((row + i) + "" + col);
+            }
+        }
+        return newShipLocations;
+    },
+
     boardSize: 7,
     numShips: 3,
     shipLength: 3,
     shipsSunk: 0,
     ships: [
-        { locations: ["06", "16", "26"], hits: ["", "", ""] },
-        { locations: ["24", "34", "44"], hits: ["", "", ""] },
-        { locations: ["10", "11", "12"], hits: ["", "", ""] }
+        { locations: ["0", "0", "0"], hits: ["", "", ""] },
+        { locations: ["0", "0", "0"], hits: ["", "", ""] },
+        { locations: ["0", "0", "0"], hits: ["", "", ""] }
     ],
 
     fire: function(guess) {
@@ -62,10 +108,17 @@ const model = {
 
 const controller = {
     guesses: 0,
-    processGuesses: function(guess) {
-        //code will go here
-    },
-
+    guessesLocation: [],
+    processGuess: function(guess) {
+        let location = parseGuess(guess);
+        if (location) {
+            this.guesses++;
+            let hit = model.fire(location);
+            if (hit && model.shipsSunk === model.numShips) {
+                view.displayMessage("You sank all my ships in " + this.guesses + " guesses!!");
+            }
+        }
+    }
 }
 
 function parseGuess(guess) {
@@ -74,6 +127,7 @@ function parseGuess(guess) {
         alert("Oops, please enter a valid letter and number on the board");
     } else {
         firstChar = guess.charAt(0);
+        firstChar = firstChar.toUpperCase();
         let row = alphabet.indexOf(firstChar); //searches for a match in array then returns the index of match
         let column = guess.charAt(1);
         
@@ -87,20 +141,31 @@ function parseGuess(guess) {
     return null; 
 }
 
+function handleFireButton() {
+    let guessInput = document.getElementById("guessInput");
+    let guess = guessInput.value;
+    controller.processGuess(guess);
 
-// function shipPosition() {
-//     let arr = ["A", "B", "C", "D", "E", "F", "G"];
-//     let ranLetter = Math.floor(Math.random() * (arr.length));
-//     let ranNum = Math.floor(Math.random() * (arr.length));
+    guessInput.value = "";    //this line resets the form input element to be the empty string. That way you don't have to explicitly select the text and delete it before entering the next guess, which would be annoying.
+}
 
-//     let pos1 = arr[ranLetter] + ranNum;
-//     let pos2;
-//     if (ranNum < 6) {
-//         pos2 = ranNum + 1;
-//     } else {
-//         pos2 = ranNum - 1;
-//     }
+function handleKeyPress(e) {
+    let fireButton = document.getElementById("fireButton");
+    if (e.keyCode === 13) {
+        fireButton.click();
+        return false;
+    }
+}
 
-//     return pos1 + pos2;
-// }
+window.onload = init;
+
+function init() {
+    let fireButton = document.getElementById("fireButton");
+    fireButton.onclick = handleFireButton;
+    let guessInput = document.getElementById("guessInput");
+    guessInput.onkeypress = handleKeyPress;
+
+    model.generateShipLocations();
+}
+
 
