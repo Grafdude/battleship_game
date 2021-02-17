@@ -108,10 +108,17 @@ const model = {
 
 const controller = {
     guesses: 0,
-    guessesLocation: [],
-    processGuess: function(guess) {
+    guessHistory: [],
+    processGuess: function(guess) {    
         let location = parseGuess(guess);
         if (location) {
+            for(let i = 0; i < this.guessHistory.length; i++) {
+                if (location === this.guessHistory[i]) {
+                    alert("You already pick this location, try again.")
+                    return;
+                }
+            }
+            this.guessHistory.push(location)
             this.guesses++;
             let hit = model.fire(location);
             if (hit && model.shipsSunk === model.numShips) {
