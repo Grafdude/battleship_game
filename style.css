@@ -7,7 +7,7 @@
 
 html {
     font-size: 62.5%;
-    box-sizing:border-box;
+    box-sizing: border-box;
     font-family: 'Dosis', sans-serif;
 }
 
@@ -24,7 +24,7 @@ body {
 #board {
     width: 1024px;
     height: 863px;
-    background: url("img/board.jpg") no-repeat;
+    background: url('img/board.jpg') no-repeat;
     position: relative;
 }
 
@@ -35,7 +35,7 @@ body {
 }
 
 .row {
-    display: flex;   
+    display: flex;
 }
 
 .row > * {
@@ -48,7 +48,6 @@ form {
     position: absolute;
     bottom: -40px;
     right: 0;
-    
 }
 
 form input {
@@ -78,10 +77,60 @@ button {
 }
 
 .hit {
-    background: url("img/ship.png") no-repeat center center;
+    background: url('img/ship.png') no-repeat center center;
 }
 
 .miss {
-    background: url("img/miss.png") no-repeat center center;
+    background: url('img/miss.png') no-repeat center center;
 }
 
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 34rem;
+    background: #030303;
+    border-radius: 1.4rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+    color: rgb(83, 175, 19);
+    border: 2px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem;
+}
+
+.modal-soldier {
+    width: 294px;
+    height: 311px;
+    margin-top: -15rem;
+}
+
+.modal-soldier img {
+    height: 100%;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0;
+    right: 2.5rem;
+    font-size: 6rem;
+    background: transparent;
+    color: #555;
+    cursor: pointer;
+    outline: none;
+}
+
+.modal-msg {
+    font-size: 2.8rem;
+    text-align: center;
+    color: orangered;
+}
+
+.modal--show {
+    visibility: visible;
+    opacity: 1;
+}
