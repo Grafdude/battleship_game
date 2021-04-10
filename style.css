@@ -3,6 +3,7 @@
 *::after {
     margin: 0;
     padding: 0;
+    box-sizing: inherit;
 }
 
 html {
@@ -18,13 +19,12 @@ body {
     align-items: center;
     height: 100vh;
     font-size: 1.6rem;
-    box-sizing: inherit;
 }
 
 #board {
     width: 1024px;
     height: 863px;
-    background: url('img/board.jpg') no-repeat;
+    /* background: url('img/board.jpg') no-repeat; */
     position: relative;
 }
 
@@ -39,9 +39,14 @@ body {
 }
 
 .row > * {
-    width: 95px;
-    height: 97px;
-    /* border: 2px solid greenyellow; */
+    flex: 1 1 14.28%;
+    border: 1px solid greenyellow;
+}
+
+.row-label {
+    border: 5px solid red;
+    color: greenyellow;
+    display: flex;
 }
 
 form {
@@ -88,7 +93,7 @@ button {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -60%) scale(0.75);
     width: 34rem;
     background: #030303;
     border-radius: 1.4rem;
@@ -133,4 +138,5 @@ button {
 .modal--show {
     visibility: visible;
     opacity: 1;
+    transform: translate(-50%, -60%) scale(1);
 }

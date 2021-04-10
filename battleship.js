@@ -68,7 +68,6 @@ const view = {
 
     displayMiss: function (location) {
         if (location) {
-            console.log(location);
             let cell = document.getElementById(location);
             cell.setAttribute('class', 'miss');
         }
