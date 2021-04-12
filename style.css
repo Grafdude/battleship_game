@@ -32,21 +32,36 @@ body {
     position: absolute;
     top: 98px;
     left: 173px;
+    width: 100%;
 }
 
 .row {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 10rem;
 }
 
 .row > * {
-    flex: 1 1 14.28%;
     border: 1px solid greenyellow;
 }
 
 .row-label {
-    border: 5px solid red;
     color: greenyellow;
+    border: none;
+}
+
+.row-label > * {
+    text-align: center;
+    font-size: 2.4rem;
     display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.col-label {
+    color: greenyellow;
+    text-align: right;
+    font-size: 2.4rem;
 }
 
 form {
