@@ -23,6 +23,7 @@ body {
 
 #board {
     width: 100%;
+    min-width: 50rem;
     max-width: 100rem;
     height: 100rem;
     /* background: url('img/board.jpg') no-repeat; */
@@ -44,6 +45,13 @@ body {
     border: 1px solid greenyellow;
 }
 
+.row-container > *:nth-of-type(8n + 9) {
+    border: 1px solid transparent;
+    justify-self: end;
+    padding-right: 2rem;
+    align-self: center;
+}
+
 .row > *:not(:first-child) {
     border: 1px solid greenyellow;
 }
@@ -56,10 +64,10 @@ body {
 
 .col-label {
     color: greenyellow;
-    text-align: right;
+    justify-self: center;
     font-size: 2.4rem;
-    align-self: center;
-    padding-right: 2rem;
+    align-self: end;
+    padding-bottom: 2rem;
 }
 
 form {
