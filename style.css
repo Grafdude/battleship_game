@@ -22,46 +22,44 @@ body {
 }
 
 #board {
-    width: 1024px;
-    height: 863px;
+    width: 100%;
+    max-width: 100rem;
+    height: 100rem;
     /* background: url('img/board.jpg') no-repeat; */
     position: relative;
 }
 
 .row-container {
-    position: absolute;
+    /* position: absolute;
     top: 98px;
     left: 173px;
-    width: 100%;
-}
-
-.row {
+    width: 100%; */
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: 10rem;
+    grid-template-rows: 10rem repeat(7, 10rem);
+    padding-bottom: 60%;
 }
 
-.row > * {
+.row-container > *:nth-of-type(1n + 10) {
+    border: 1px solid greenyellow;
+}
+
+.row > *:not(:first-child) {
     border: 1px solid greenyellow;
 }
 
 .row-label {
     color: greenyellow;
-    border: none;
-}
-
-.row-label > * {
-    text-align: center;
-    font-size: 2.4rem;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    align-content: center;
+    justify-content: end;
 }
 
 .col-label {
     color: greenyellow;
     text-align: right;
     font-size: 2.4rem;
+    align-self: center;
+    padding-right: 2rem;
 }
 
 form {
@@ -91,9 +89,10 @@ button {
 #messageArea {
     color: greenyellow;
     font-size: 2.8rem;
-    position: absolute;
+    text-align: center;
+    /* position: absolute;
     top: 20px;
-    left: 20px;
+    left: 20px; */
 }
 
 .hit {
