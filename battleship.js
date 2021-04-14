@@ -57,7 +57,7 @@ const init = () => {
 const view = {
     //this method takes a string message and displays it on the screen
     displayMessage: function (msg) {
-        let messageArea = document.getElementById('messageArea');
+        let messageArea = document.querySelector('.messageArea');
         messageArea.innerHTML = msg;
     },
 

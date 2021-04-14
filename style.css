@@ -13,27 +13,80 @@ html {
 
 body {
   background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   font-size: 1.6rem;
   box-sizing: border-box;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
-#board {
+.board {
   width: 100%;
-  min-width: 50rem;
   max-width: 100rem;
   /* height: 100rem; */
   /* background: url('img/board.jpg') no-repeat; */
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr repeat(2, min-content) 1fr;
 }
 
 .top-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  grid-column: 2/4;
   padding: 2rem;
+}
+
+.messageArea {
+  grid-column: 2/3;
+  color: greenyellow;
+  font-size: 2.8rem;
+  text-align: center;
+  align-self: center;
+}
+
+form {
+  text-align: center;
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+form input {
+  background-color: #53af13;
+  font-family: inherit;
+  text-transform: uppercase;
+  padding: 1rem 2.4rem;
+  font-size: 2.2rem;
+  font-weight: bold;
+  border: none;
+  width: 12rem;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  border: 2px solid transparent;
+  outline: none;
+}
+form input:focus {
+  border: 2px solid #afffa9;
+}
+
+.btn {
+  font-family: inherit;
+  font-size: 2rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.btn-fire {
+  padding: 1rem 2.6rem;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  transition: all 0.25s;
+  font-weight: bold;
+  background: #ff9500;
+  border: 2px solid transparent;
+}
+.btn-fire:hover {
+  background: orangered;
 }
 
 .row-container {
@@ -42,6 +95,8 @@ body {
   grid-template-rows: 6rem repeat(7, minmax(auto, 10rem));
   justify-content: center;
   position: relative;
+  grid-column: 2/4;
+  grid-row: 2/3;
 }
 .row-container > *:nth-of-type(1n + 10) {
   border: 1px solid greenyellow;
@@ -59,12 +114,14 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-45%, -44%);
+  transform: translate(-50%, -50%);
   width: 65rem;
   height: 65rem;
   border-radius: 50%;
   background-color: rgba(83, 175, 19, 0);
   border: 0.9rem solid rgba(83, 175, 19, 0.2);
+  grid-row: 2/-1;
+  grid-column: 2/-1;
 }
 .row-container .crosshair .md {
   width: 60%;
@@ -79,7 +136,7 @@ body {
 }
 .row-container .crosshair .line {
   border: none;
-  width: 100%;
+  width: 90%;
   height: 1rem;
   border-radius: 0;
   background-color: rgba(83, 175, 19, 0.2);
@@ -107,7 +164,11 @@ body {
 .row-container .crosshair .line-vertical::after {
   left: 3rem;
 }
-
+.row-container .crosshair .line-vertical .tip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
 .row-label {
   align-content: center;
   justify-content: center;
@@ -124,50 +185,6 @@ body {
   color: greenyellow;
   font-size: 3rem;
   font-weight: 900;
-}
-
-form {
-  text-align: center;
-}
-form input {
-  background-color: #53af13;
-  font-family: inherit;
-  text-transform: uppercase;
-  padding: 1rem 2.4rem;
-  font-size: 2.2rem;
-  font-weight: bold;
-  border: none;
-  border-top-left-radius: 1.5rem;
-  border-bottom-left-radius: 1.5rem;
-  border: 2px solid transparent;
-  outline: none;
-}
-form input:focus {
-  border: 2px solid #afffa9;
-}
-
-button {
-  padding: 1rem 2.6rem;
-  border-top-right-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
-  font-family: inherit;
-  font-size: 2rem;
-  font-weight: bold;
-  background: orangered;
-  border: 2px solid transparent;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.25s;
-}
-button:hover {
-  background: #ff9500;
-}
-
-#messageArea {
-  color: greenyellow;
-  font-size: 2.8rem;
-  text-align: center;
-  align-self: center;
 }
 
 .hit {
@@ -198,8 +215,8 @@ button:hover {
 }
 .modal-close {
   position: absolute;
-  top: -2rem;
-  right: -1rem;
+  top: -1rem;
+  right: 2rem;
   font-size: 6rem;
   background: transparent;
   color: #555;
@@ -230,6 +247,12 @@ button:hover {
   .row-container {
     grid-template-columns: 6rem repeat(7, 9rem);
     grid-template-rows: 8rem repeat(7, minmax(auto, 9rem));
+  }
+}
+@media only screen and (max-width: 700px) {
+  .row-container {
+    grid-template-columns: 6rem repeat(7, 7rem);
+    grid-template-rows: 8rem repeat(7, minmax(auto, 7rem));
   }
 }
 

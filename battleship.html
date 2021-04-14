@@ -13,14 +13,14 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <div id="board">
+        <div class="board">
             <div class="top-wrapper">
-                <div id="messageArea">
+                <div class="messageArea">
                     Go Ahead! See if you can sank my ships.
                 </div>
                 <form>
-                    <input type="text" id="guessInput" placeholder="A0" />
-                    <button type="button" id="fireButton">FIRE!🔥</button>
+                    <input type="text" id="guessInput" placeholder="A0" maxlength="3"/>
+                    <button type="button" id="fireButton" class="btn btn-fire">FIRE!🔥</button>
                 </form>
             </div>
 
@@ -96,11 +96,13 @@
                 <div id="64"></div>
                 <div id="65"></div>
                 <div id="66"></div>
+
                 <div class="crosshair">
                     <div class="crosshair md"></div>
                     <div class="crosshair sm"></div>
                     <div class="crosshair line">
                         <div class="line-vertical"></div>
+                        <div class="line-vertical tip"></div>
                     </div>
                 </div>
             </div>
@@ -109,7 +111,7 @@
             <div class="modal-soldier">
                 <img src="img/soldier.png" alt="soldier" />
             </div>
-            <button class="modal-close">&times;</button>
+            <button class="modal-close btn">&times;</button>
             <h3 class="modal-msg"></h3>
         </div>
         <script src="battleship.js"></script>
