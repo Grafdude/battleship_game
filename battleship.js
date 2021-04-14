@@ -87,7 +87,6 @@ const view = {
         modalTxt.textContent = msg;
         modal.classList.toggle('modal--show');
     },
-    closeModal: function (e) {},
 };
 
 const model = {
@@ -173,7 +172,7 @@ const model = {
     },
 
     isSunk: function (ship) {
-        for (var i = 0; i < this.shipLength; i++) {
+        for (let i = 0; i < this.shipLength; i++) {
             if (ship.hits[i] !== 'hit') {
                 return false;
             }
