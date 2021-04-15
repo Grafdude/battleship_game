@@ -234,7 +234,9 @@ body {
 }
 
 .hit {
-  background: url("img/ship.png") no-repeat center center;
+  object-fit: contain;
+  width: 90%;
+  height: 90%;
 }
 
 .modal {

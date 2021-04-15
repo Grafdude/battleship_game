@@ -262,12 +262,10 @@ body {
 }
 
 .hit {
-    background: url('img/ship.png') no-repeat center center;
+    object-fit: contain;
+    width: 90%;
+    height: 90%;
 }
-
-// .miss {
-//     background: url('img/miss.png') no-repeat center center;
-// }
 
 .modal {
     position: absolute;

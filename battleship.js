@@ -60,14 +60,13 @@ const view = {
     },
 
     displayHit: function (location) {
-        let cell = document.getElementById(location);
-        cell.setAttribute('class', 'hit');
+        document.getElementById(location).innerHTML =
+            '<img src="img/ship.svg" class="hit" alt="ship">';
     },
 
     displayMiss: function (location) {
         if (location) {
             let cell = document.getElementById(location);
-            // cell.setAttribute('class', 'miss');
             cell.textContent = 'MISS';
         }
     },
