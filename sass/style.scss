@@ -1,4 +1,11 @@
 $color-green: greenyellow;
+$color-green-alpha: rgba(83, 175, 19, 0.2);
+$crosshairwidth: 1rem;
+
+$bp-lg: 62.5em; //1000px
+$bp-med: 43.75em; //700px
+$bp-sm: 33.75em; //540px
+$bp-xsm: 25em; //400px
 
 *,
 *::before,
@@ -27,52 +34,66 @@ body {
 .board {
     width: 100%;
     max-width: 100rem;
-    /* height: 100rem; */
-    /* background: url('img/board.jpg') no-repeat; */
     position: relative;
 
     display: grid;
     grid-template-columns: 1fr repeat(2, min-content) 1fr;
 }
 
-.top-wrapper {
+.panel {
+    padding: 2rem;
+    border: 1px solid $color-green-alpha;
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    grid-template-rows: 10rem;
     grid-column: 2 / 4;
 
-    padding: 2rem;
-}
+    &__message-area {
+        grid-column: 1 / 2;
+        padding: 0 3rem;
 
-.messageArea {
-    grid-column: 2 / 3;
+        color: $color-green;
+        font-size: 2.4rem;
+        text-align: center;
+        align-self: center;
 
-    color: $color-green;
-    font-size: 2.8rem;
-    text-align: center;
-    align-self: center;
-}
+        @media only screen and (max-width: $bp-sm) {
+            grid-column: 1 / 3;
+            grid-row: 1 / 2;
+        }
+    }
 
-form {
-    text-align: center;
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
+    form {
+        text-align: center;
+        align-self: center;
 
-    input {
-        background-color: rgb(83, 175, 19);
-        font-family: inherit;
-        text-transform: uppercase;
-        padding: 1rem 2.4rem;
-        font-size: 2.2rem;
-        font-weight: bold;
-        border: none;
-        width: 12rem;
-        border-top-left-radius: 1.5rem;
-        border-bottom-left-radius: 1.5rem;
-        border: 2px solid transparent;
-        outline: none;
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
 
-        &:focus {
-            border: 2px solid #afffa9;
+        @media only screen and (max-width: $bp-sm) {
+            text-align: center;
+            grid-column: 1 / 3;
+            grid-row: 2 / 3;
+        }
+
+        input {
+            background-color: rgb(83, 175, 19);
+            font-family: inherit;
+            text-transform: uppercase;
+            padding: 1rem 2.4rem;
+            font-size: 2.2rem;
+            font-weight: bold;
+            border: none;
+            width: 12rem;
+            border-top-left-radius: 1.5rem;
+            border-bottom-left-radius: 1.5rem;
+            border: 2px solid transparent;
+            outline: none;
+
+            &:focus {
+                border: 2px solid #afffa9;
+            }
         }
     }
 }
@@ -101,20 +122,44 @@ form {
 
 .row-container {
     display: grid;
-    grid-template-columns: 5rem repeat(7, 10rem);
-    grid-template-rows: 6rem repeat(7, minmax(auto, 10rem));
+    grid-template-columns: 5rem repeat(7, 9.4rem);
+    grid-template-rows: 6rem repeat(7, minmax(auto, 9.4rem));
     justify-content: center;
     position: relative;
 
     grid-column: 2 / 4;
     grid-row: 2 / 3;
 
+    @media only screen and (max-width: $bp-lg) {
+        grid-template-columns: 6rem repeat(7, 9rem);
+        grid-template-rows: 8rem repeat(7, minmax(auto, 9rem));
+    }
+
+    @media only screen and (max-width: $bp-med) {
+        grid-template-columns: 6rem repeat(7, 7rem);
+        grid-template-rows: 8rem repeat(7, minmax(auto, 7rem));
+    }
+
+    @media only screen and (max-width: $bp-sm) {
+        grid-template-columns: 6rem repeat(7, 5.5rem);
+        grid-template-rows: 8rem repeat(7, minmax(auto, 5.5rem));
+    }
+
+    @media only screen and (max-width: $bp-xsm) {
+        grid-template-columns: 6rem repeat(7, 4.5rem);
+        grid-template-rows: 8rem repeat(7, minmax(auto, 4.5rem));
+    }
+
     & > *:nth-of-type(1n + 10) {
         border: 1px solid $color-green;
+        display: grid;
+        place-items: center;
+        font-size: 2.6rem;
+        color: $color-green;
     }
 
     & > *:not(.row-label, .col-label, :first-child) {
-        background-color: rgba(83, 175, 19, 0.1);
+        background-color: $color-green-alpha;
     }
 
     & > *:nth-of-type(8n + 9) {
@@ -129,11 +174,12 @@ form {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 65rem;
-        height: 65rem;
+        width: 100%;
+        height: 100%;
         border-radius: 50%;
         background-color: rgba(83, 175, 19, 0);
-        border: 0.9rem solid rgba(83, 175, 19, 0.2);
+        border: $crosshairwidth solid $color-green-alpha;
+        z-index: -2;
 
         grid-row: 2 / -1;
         grid-column: 2 / -1;
@@ -148,7 +194,7 @@ form {
             width: 30%;
             height: 30%;
             transform: translate(-50%, -50%);
-            border: 0.6rem solid rgba(83, 175, 19, 0.2);
+            border: 0.6rem solid $color-green-alpha;
         }
 
         .line {
@@ -156,7 +202,7 @@ form {
             width: 90%;
             height: 1rem;
             border-radius: 0;
-            background-color: rgba(83, 175, 19, 0.2);
+            background-color: $color-green-alpha;
             transform: translate(-50%, -50%);
 
             &-vertical {
@@ -166,7 +212,7 @@ form {
                 height: 6rem;
                 width: 0.7rem;
                 transform: translate(-50%, -50%);
-                background-color: rgba(83, 175, 19, 0.2);
+                background-color: $color-green-alpha;
 
                 &::before,
                 &::after {
@@ -177,7 +223,7 @@ form {
                     transform: translateY(-50%);
                     width: 0.7rem;
                     height: 4rem;
-                    background-color: rgba(83, 175, 19, 0.2);
+                    background-color: $color-green-alpha;
                 }
 
                 &::after {
@@ -188,9 +234,9 @@ form {
                     position: absolute;
                     top: 50%;
                     left: 50%;
-
-                    &::after {
-                    }
+                    width: $crosshairwidth;
+                    height: 3rem;
+                    background-color: $color-green;
                 }
             }
         }
@@ -203,7 +249,7 @@ form {
 }
 
 .col-label {
-    justify-self: center;
+    text-align: center;
     align-self: end;
     padding-bottom: 2rem;
 }
@@ -219,9 +265,9 @@ form {
     background: url('img/ship.png') no-repeat center center;
 }
 
-.miss {
-    background: url('img/miss.png') no-repeat center center;
-}
+// .miss {
+//     background: url('img/miss.png') no-repeat center center;
+// }
 
 .modal {
     position: absolute;
@@ -273,19 +319,5 @@ form {
         visibility: visible;
         opacity: 1;
         transform: translate(-50%, -60%) scale(1);
-    }
-}
-
-@media only screen and (max-width: 1000px) {
-    .row-container {
-        grid-template-columns: 6rem repeat(7, 9rem);
-        grid-template-rows: 8rem repeat(7, minmax(auto, 9rem));
-    }
-}
-
-@media only screen and (max-width: 700px) {
-    .row-container {
-        grid-template-columns: 6rem repeat(7, 7rem);
-        grid-template-rows: 8rem repeat(7, minmax(auto, 7rem));
     }
 }

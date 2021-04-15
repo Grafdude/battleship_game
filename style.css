@@ -24,34 +24,47 @@ body {
 .board {
   width: 100%;
   max-width: 100rem;
-  /* height: 100rem; */
-  /* background: url('img/board.jpg') no-repeat; */
   position: relative;
   display: grid;
   grid-template-columns: 1fr repeat(2, min-content) 1fr;
 }
 
-.top-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-  grid-column: 2/4;
+.panel {
   padding: 2rem;
+  border: 1px solid rgba(83, 175, 19, 0.2);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  grid-template-rows: 10rem;
+  grid-column: 2/4;
 }
-
-.messageArea {
-  grid-column: 2/3;
+.panel__message-area {
+  grid-column: 1/2;
+  padding: 0 3rem;
   color: greenyellow;
-  font-size: 2.8rem;
+  font-size: 2.4rem;
   text-align: center;
   align-self: center;
 }
-
-form {
+@media only screen and (max-width: 33.75em) {
+  .panel__message-area {
+    grid-column: 1/3;
+    grid-row: 1/2;
+  }
+}
+.panel form {
   text-align: center;
-  grid-column: 3/4;
+  align-self: center;
+  grid-column: 2/3;
   grid-row: 1/2;
 }
-form input {
+@media only screen and (max-width: 33.75em) {
+  .panel form {
+    text-align: center;
+    grid-column: 1/3;
+    grid-row: 2/3;
+  }
+}
+.panel form input {
   background-color: #53af13;
   font-family: inherit;
   text-transform: uppercase;
@@ -65,7 +78,7 @@ form input {
   border: 2px solid transparent;
   outline: none;
 }
-form input:focus {
+.panel form input:focus {
   border: 2px solid #afffa9;
 }
 
@@ -91,18 +104,46 @@ form input:focus {
 
 .row-container {
   display: grid;
-  grid-template-columns: 5rem repeat(7, 10rem);
-  grid-template-rows: 6rem repeat(7, minmax(auto, 10rem));
+  grid-template-columns: 5rem repeat(7, 9.4rem);
+  grid-template-rows: 6rem repeat(7, minmax(auto, 9.4rem));
   justify-content: center;
   position: relative;
   grid-column: 2/4;
   grid-row: 2/3;
 }
+@media only screen and (max-width: 62.5em) {
+  .row-container {
+    grid-template-columns: 6rem repeat(7, 9rem);
+    grid-template-rows: 8rem repeat(7, minmax(auto, 9rem));
+  }
+}
+@media only screen and (max-width: 43.75em) {
+  .row-container {
+    grid-template-columns: 6rem repeat(7, 7rem);
+    grid-template-rows: 8rem repeat(7, minmax(auto, 7rem));
+  }
+}
+@media only screen and (max-width: 33.75em) {
+  .row-container {
+    grid-template-columns: 6rem repeat(7, 5.5rem);
+    grid-template-rows: 8rem repeat(7, minmax(auto, 5.5rem));
+  }
+}
+@media only screen and (max-width: 25em) {
+  .row-container {
+    grid-template-columns: 6rem repeat(7, 4.5rem);
+    grid-template-rows: 8rem repeat(7, minmax(auto, 4.5rem));
+  }
+}
 .row-container > *:nth-of-type(1n + 10) {
   border: 1px solid greenyellow;
+  display: grid;
+  place-items: center;
+  font-size: 2.6rem;
+  color: greenyellow;
 }
 .row-container > *:not(.row-label, .col-label, :first-child) {
-  background-color: rgba(83, 175, 19, 0.1);
+  background-color: rgba(83, 175, 19, 0.2);
 }
 .row-container > *:nth-of-type(8n + 9) {
   border: 1px solid transparent;
@@ -115,11 +156,12 @@ form input:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 65rem;
-  height: 65rem;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   background-color: rgba(83, 175, 19, 0);
-  border: 0.9rem solid rgba(83, 175, 19, 0.2);
+  border: 1rem solid rgba(83, 175, 19, 0.2);
+  z-index: -2;
   grid-row: 2/-1;
   grid-column: 2/-1;
 }
@@ -168,14 +210,18 @@ form input:focus {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 1rem;
+  height: 3rem;
+  background-color: greenyellow;
 }
+
 .row-label {
   align-content: center;
   justify-content: center;
 }
 
 .col-label {
-  justify-self: center;
+  text-align: center;
   align-self: end;
   padding-bottom: 2rem;
 }
@@ -189,10 +235,6 @@ form input:focus {
 
 .hit {
   background: url("img/ship.png") no-repeat center center;
-}
-
-.miss {
-  background: url("img/miss.png") no-repeat center center;
 }
 
 .modal {
@@ -241,19 +283,6 @@ form input:focus {
   visibility: visible;
   opacity: 1;
   transform: translate(-50%, -60%) scale(1);
-}
-
-@media only screen and (max-width: 1000px) {
-  .row-container {
-    grid-template-columns: 6rem repeat(7, 9rem);
-    grid-template-rows: 8rem repeat(7, minmax(auto, 9rem));
-  }
-}
-@media only screen and (max-width: 700px) {
-  .row-container {
-    grid-template-columns: 6rem repeat(7, 7rem);
-    grid-template-rows: 8rem repeat(7, minmax(auto, 7rem));
-  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -50,14 +50,12 @@ const init = () => {
     fireButton.onclick = handleFireButton;
     const guessInput = document.getElementById('guessInput');
     guessInput.onkeypress = handleKeyPress;
-
     model.generateShipLocations();
 };
 
 const view = {
-    //this method takes a string message and displays it on the screen
     displayMessage: function (msg) {
-        let messageArea = document.querySelector('.messageArea');
+        let messageArea = document.querySelector('.panel__message-area');
         messageArea.innerHTML = msg;
     },
 
@@ -69,7 +67,8 @@ const view = {
     displayMiss: function (location) {
         if (location) {
             let cell = document.getElementById(location);
-            cell.setAttribute('class', 'miss');
+            // cell.setAttribute('class', 'miss');
+            cell.textContent = 'MISS';
         }
     },
 
@@ -158,9 +157,7 @@ const model = {
                 view.displayHit(guess);
                 view.displayMessage('OUCH! That was a big HIT soldier!');
                 if (this.isSunk(ship)) {
-                    view.displayMessage(
-                        'OH NO! You sank one of my battlships!'
-                    );
+                    view.displayMessage('ARRRGHH! You sank one of my ships!');
                     this.shipsSunk++;
                 }
                 return true;
@@ -191,7 +188,7 @@ const controller = {
             for (let i = 0; i < this.guessHistory.length; i++) {
                 if (location === this.guessHistory[i]) {
                     view.displayModal(
-                        'You already pick this location soldier! Wake up and try again.'
+                        'You already pick this location soldier, wake up and try again!'
                     );
                     return;
                 }
