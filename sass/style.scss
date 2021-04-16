@@ -41,7 +41,7 @@ body {
 }
 
 .panel {
-    padding: 2rem;
+    // padding: 2rem;
     border: 1px solid $color-green-alpha;
 
     display: grid;
@@ -106,9 +106,11 @@ body {
     cursor: pointer;
 
     &-fire {
-        padding: 1rem 2.6rem;
-        border-top-right-radius: 1.5rem;
-        border-bottom-right-radius: 1.5rem;
+        padding: 1rem 2rem;
+        border-top-right-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+        border-bottom-left-radius: 1rem;
+        border-top-left-radius: 1rem;
         transition: all 0.25s;
         font-weight: bold;
         background: #ff9500;
@@ -159,7 +161,6 @@ body {
     }
 
     & > *:not(.row-label, .col-label, :first-child) {
-        background-color: $color-green-alpha;
     }
 
     & > *:nth-of-type(8n + 9) {
@@ -174,12 +175,12 @@ body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
+        width: 110%;
+        height: 110%;
         border-radius: 50%;
-        background-color: rgba(83, 175, 19, 0);
+        background-color: $color-green-alpha;
         border: $crosshairwidth solid $color-green-alpha;
-        z-index: -2;
+        z-index: 2;
 
         grid-row: 2 / -1;
         grid-column: 2 / -1;
@@ -284,6 +285,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 6rem;
+    z-index: 50;
 
     &-close {
         position: absolute;
