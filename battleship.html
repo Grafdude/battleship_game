@@ -15,6 +15,11 @@
     <body>
         <div class="board">
             <div class="panel">
+                <div class="panel__heading">
+                    <svg class="panel__heading-svg">
+                        <use xlink:href="img/sprite.svg#heading-battleship"></use>
+                    </svg>
+                </div>
                 <div class="panel__message-area">
                     Go ahead, shoot soldier! Let's see what you're made of.
                 </div>
@@ -23,15 +28,20 @@
                         type="text"
                         id="guessInput"
                         placeholder="A0"
-                        maxlength="3"
+                        maxlength="2"
+                        autocomplete="off"
                     />
                     <button type="button" id="fireButton" class="btn btn-fire">
                         FIRE!🔥
                     </button>
                 </form>
+                <div class="game-score">
+                    sunked ships: <span class="game__score">0 / 3</span>
+                    high score: <span class="game__high-score"></span>
+                </div>  
             </div>
 
-            <div class="row-container">
+            <div class="grid-box">
                 <div></div>
                 <div class="col-label">0</div>
                 <div class="col-label">1</div>
@@ -112,8 +122,9 @@
                         <div class="line-vertical tip"></div>
                     </div>
                 </div>
-            </div>
+            </div>      
         </div>
+        
         <div class="modal">
             <div class="modal-soldier">
                 <img src="img/soldier.png" alt="soldier" />

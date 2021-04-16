@@ -28,7 +28,7 @@ const parseGuess = (guess) => {
 
         if (isNaN(row) || isNaN(column)) {
             return view.displayModal(
-                'That number is not on the board soldier!. Get yourself together soldier!'
+                'That number is not on the board!. Get yourself together soldier!'
             );
         } else if (
             row < 0 ||
@@ -186,10 +186,9 @@ const controller = {
         if (location) {
             for (let i = 0; i < this.guessHistory.length; i++) {
                 if (location === this.guessHistory[i]) {
-                    view.displayModal(
+                    return view.displayModal(
                         'You already pick this location soldier, wake up and try again!'
                     );
-                    return;
                 }
             }
             this.guessHistory.push(location);

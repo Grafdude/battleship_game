@@ -21,10 +21,17 @@ html {
 }
 
 body {
-    background: #000;
     height: 100vh;
     font-size: 1.6rem;
     box-sizing: border-box;
+    background: linear-gradient(
+            to bottom,
+            #030610 0%,
+            rgba(31, 71, 105, 0.49) 41.51%,
+            rgba(138, 123, 17, 0.4) 58.51%,
+            rgba(17, 36, 104, 0.13) 62.51%
+        ),
+        #000000;
 
     display: grid;
     justify-content: center;
@@ -43,21 +50,36 @@ body {
 .panel {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-    grid-template-rows: 10rem;
     grid-column: 2 / 4;
+    padding-left: 4rem;
+    margin-bottom: 2rem;
+
+    &__heading {
+        fill: $color-green;
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 100%;
+        // margin-bottom: 2rem;
+
+        &-svg {
+            fill: $color-green;
+            width: 100%;
+        }
+    }
 
     &__message-area {
         grid-column: 1 / 2;
         padding: 0 3rem;
+        min-height: 7rem;
 
         color: $color-green;
         font-size: 2.4rem;
-        text-align: right;
+        text-align: center;
         align-self: center;
 
         @media only screen and (max-width: $bp-sm) {
             grid-column: 1 / 3;
-            grid-row: 1 / 2;
+            // grid-row: 1 / 2;
             font-size: 2rem;
             text-align: center;
         }
@@ -66,9 +88,11 @@ body {
     form {
         text-align: right;
         align-self: center;
+        height: 100%;
+        padding: 3rem 0;
 
         grid-column: 2 / 3;
-        grid-row: 1 / 2;
+        grid-row: 2 / 3;
 
         @media only screen and (max-width: $bp-sm) {
             text-align: center;
@@ -86,12 +110,8 @@ body {
             font-weight: bold;
             border: none;
             width: 10rem;
-            // border-top-right-radius: 0.8rem;
-            // border-bottom-right-radius: 0.8rem;
-            // border-bottom-left-radius: 2rem;
-            // border-top-left-radius: 2rem;
             border-radius: 1.5rem;
-            border: 3px solid transparent;
+            border: 3px solid #444;
             outline: none;
             background: #333;
             color: #fff;
@@ -101,12 +121,12 @@ body {
             }
 
             &:focus {
-                border: 3px solid #4f4f4f;
+                border: 3px solid #555;
                 background: #222;
             }
 
             &::placeholder {
-                color: #444;
+                color: #4f4f4f;
             }
         }
     }
@@ -120,11 +140,7 @@ body {
     cursor: pointer;
 
     &-fire {
-        padding: 0.9rem 2rem;
-        // border-top-right-radius: 2rem;
-        // border-bottom-right-radius: 2rem;
-        // border-bottom-left-radius: 0.8rem;
-        // border-top-left-radius: 0.8rem;
+        padding: 0.9rem 1.8rem;
         border-radius: 1.5rem;
         transition: all 0.25s;
         font-weight: bold;
@@ -142,7 +158,7 @@ body {
     }
 }
 
-.row-container {
+.grid-box {
     display: grid;
     grid-template-columns: 4rem repeat(7, 9.4rem);
     grid-template-rows: 6rem repeat(7, minmax(auto, 9.4rem));
@@ -258,6 +274,15 @@ body {
                     width: $crosshairwidth;
                     height: 3rem;
                     background-color: $color-green;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 100%;
+                        width: $crosshairwidth;
+                        background-color: $color-green;
+                    }
                 }
             }
         }
@@ -270,7 +295,7 @@ body {
     padding-bottom: 2rem;
 }
 
-.row-container > .row-label,
+.grid-box > .row-label,
 .col-label {
     color: $color-green;
     font-size: 3rem;
@@ -351,4 +376,10 @@ body {
         opacity: 1;
         transform: translate(-50%, -60%) scale(1);
     }
+}
+
+.game-score {
+    color: $color-green;
+    grid-column: 2 / 3;
+    justify-self: end;
 }
