@@ -47,6 +47,7 @@ body {
   .panel__message-area {
     grid-column: 1/3;
     grid-row: 1/2;
+    font-size: 2rem;
   }
 }
 .panel form {
@@ -71,21 +72,23 @@ body {
   font-weight: bold;
   border: none;
   width: 10rem;
-  border-top-right-radius: 0.8rem;
-  border-bottom-right-radius: 0.8rem;
-  border-bottom-left-radius: 2rem;
-  border-top-left-radius: 2rem;
+  border-radius: 1.5rem;
   border: 3px solid transparent;
   outline: none;
-  background: #222;
+  background: #333;
   color: #fff;
+}
+@media only screen and (max-width: 33.75em) {
+  .panel form input {
+    font-size: 1.8rem;
+  }
 }
 .panel form input:focus {
   border: 3px solid #4f4f4f;
-  background: #111;
+  background: #222;
 }
 .panel form input::placeholder {
-  color: #888;
+  color: #444;
 }
 
 .btn {
@@ -97,18 +100,20 @@ body {
 }
 .btn-fire {
   padding: 0.9rem 2rem;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-  border-bottom-left-radius: 0.8rem;
-  border-top-left-radius: 0.8rem;
+  border-radius: 1.5rem;
   transition: all 0.25s;
   font-weight: bold;
   background: #ff9500;
   border: 2px solid transparent;
-  margin-left: 0.3rem;
+  margin-left: 0.6rem;
+}
+@media only screen and (max-width: 33.75em) {
+  .btn-fire {
+    font-size: 1.8rem;
+  }
 }
 .btn-fire:hover {
-  background: orangered;
+  background: #ff7300;
 }
 
 .row-container {
@@ -128,19 +133,19 @@ body {
 }
 @media only screen and (max-width: 43.75em) {
   .row-container {
-    grid-template-columns: 6rem repeat(7, 7rem);
+    grid-template-columns: 4.5rem repeat(7, 7rem);
     grid-template-rows: 8rem repeat(7, minmax(auto, 7rem));
   }
 }
 @media only screen and (max-width: 33.75em) {
   .row-container {
-    grid-template-columns: 6rem repeat(7, 5.5rem);
+    grid-template-columns: 4.5rem repeat(7, 5.5rem);
     grid-template-rows: 8rem repeat(7, minmax(auto, 5.5rem));
   }
 }
 @media only screen and (max-width: 25em) {
   .row-container {
-    grid-template-columns: 6rem repeat(7, 4.5rem);
+    grid-template-columns: 4rem repeat(7, 4.5rem);
     grid-template-rows: 8rem repeat(7, minmax(auto, 4.5rem));
   }
 }
@@ -151,7 +156,7 @@ body {
   font-size: 2.6rem;
   color: greenyellow;
 }
-.row-container > *:nth-of-type(8n + 9) {
+.row-container > .row-label {
   border: 1px solid transparent;
   justify-self: end;
   padding-right: 2rem;
@@ -221,22 +226,23 @@ body {
   background-color: greenyellow;
 }
 
-.row-label {
-  align-content: center;
-  justify-content: center;
-}
-
 .col-label {
   text-align: center;
   align-self: end;
   padding-bottom: 2rem;
 }
 
-.row-label,
+.row-container > .row-label,
 .col-label {
   color: greenyellow;
   font-size: 3rem;
   font-weight: 900;
+}
+@media only screen and (max-width: 25em) {
+  .row-container > .row-label,
+.col-label {
+    font-size: 2rem;
+  }
 }
 
 .hit {
