@@ -66,8 +66,8 @@ const view = {
 
     displayMiss: function (location) {
         if (location) {
-            let cell = document.getElementById(location);
-            cell.textContent = 'MISS';
+            document.getElementById(location).innerHTML =
+                '<img src="img/miss.svg" class="miss" alt="miss">';
         }
     },
 

@@ -41,9 +41,6 @@ body {
 }
 
 .panel {
-    // padding: 2rem;
-    border: 1px solid $color-green-alpha;
-
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
     grid-template-rows: 10rem;
@@ -65,7 +62,7 @@ body {
     }
 
     form {
-        text-align: center;
+        text-align: right;
         align-self: center;
 
         grid-column: 2 / 3;
@@ -81,18 +78,27 @@ body {
             background-color: rgb(83, 175, 19);
             font-family: inherit;
             text-transform: uppercase;
-            padding: 1rem 2.4rem;
+            padding: 0.8rem 2.4rem;
             font-size: 2.2rem;
             font-weight: bold;
             border: none;
-            width: 12rem;
-            border-top-left-radius: 1.5rem;
-            border-bottom-left-radius: 1.5rem;
-            border: 2px solid transparent;
+            width: 10rem;
+            border-top-right-radius: 0.8rem;
+            border-bottom-right-radius: 0.8rem;
+            border-bottom-left-radius: 2rem;
+            border-top-left-radius: 2rem;
+            border: 3px solid transparent;
             outline: none;
+            background: #222;
+            color: #fff;
 
             &:focus {
-                border: 2px solid #afffa9;
+                border: 3px solid #4f4f4f;
+                background: #111;
+            }
+
+            &::placeholder {
+                color: #888;
             }
         }
     }
@@ -106,15 +112,16 @@ body {
     cursor: pointer;
 
     &-fire {
-        padding: 1rem 2rem;
-        border-top-right-radius: 3rem;
-        border-bottom-right-radius: 3rem;
-        border-bottom-left-radius: 1rem;
-        border-top-left-radius: 1rem;
+        padding: 0.9rem 2rem;
+        border-top-right-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+        border-bottom-left-radius: 0.8rem;
+        border-top-left-radius: 0.8rem;
         transition: all 0.25s;
         font-weight: bold;
         background: #ff9500;
         border: 2px solid transparent;
+        margin-left: 0.3rem;
 
         &:hover {
             background: orangered;
@@ -124,7 +131,7 @@ body {
 
 .row-container {
     display: grid;
-    grid-template-columns: 5rem repeat(7, 9.4rem);
+    grid-template-columns: 4rem repeat(7, 9.4rem);
     grid-template-rows: 6rem repeat(7, minmax(auto, 9.4rem));
     justify-content: center;
     position: relative;
@@ -175,8 +182,8 @@ body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 110%;
-        height: 110%;
+        width: 105%;
+        height: 105%;
         border-radius: 50%;
         background-color: $color-green-alpha;
         border: $crosshairwidth solid $color-green-alpha;
@@ -266,6 +273,15 @@ body {
     object-fit: contain;
     width: 90%;
     height: 90%;
+    z-index: 10;
+}
+
+.miss {
+    object-fit: contain;
+    width: 70%;
+    height: auto;
+    z-index: 10;
+    fill: rgb(83, 175, 19);
 }
 
 .modal {
