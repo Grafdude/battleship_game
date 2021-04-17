@@ -186,7 +186,7 @@ body {
   height: 105%;
   border-radius: 50%;
   background-color: rgba(83, 175, 19, 0.2);
-  border: 1rem solid rgba(83, 175, 19, 0.2);
+  border: 0.5rem solid rgba(83, 175, 19, 0.2);
   z-index: 2;
   grid-row: 2/-1;
   grid-column: 2/-1;
@@ -236,7 +236,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 1rem;
+  width: 0.5rem;
   height: 3rem;
   background-color: greenyellow;
 }
@@ -245,7 +245,7 @@ body {
   position: absolute;
   top: 50%;
   left: 100%;
-  width: 1rem;
+  width: 0.5rem;
   background-color: greenyellow;
 }
 
@@ -333,9 +333,31 @@ body {
 }
 
 .game-score {
+  display: grid;
+  width: 100%;
   color: greenyellow;
+  grid-column: 1/3;
+  justify-self: center;
+  font-size: 1.8rem;
+}
+.game-score span {
+  color: #ff9100;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+}
+.game-score .value {
+  color: greenyellow;
+  display: inline-block;
+}
+.game-score__score {
   grid-column: 2/3;
   justify-self: end;
+}
+.game-score__high-score {
+  grid-column: 1/2;
+  justify-self: center;
+  font-size: 2.1rem;
 }
 
 /*# sourceMappingURL=style.css.map */

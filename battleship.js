@@ -18,7 +18,7 @@ const parseGuess = (guess) => {
     let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
     if (guess === null || guess.length !== 2) {
         return view.displayModal(
-            "Soldier! Enter a valid letter and number that's on the board!"
+            'Soldier! Enter a valid letter and number that is on the board!'
         );
     } else {
         firstChar = guess.charAt(0);
@@ -84,6 +84,10 @@ const view = {
         const modalTxt = document.querySelector('.modal-msg');
         modalTxt.textContent = msg;
         modal.classList.toggle('modal--show');
+    },
+    displaySunk: function () {
+        let str = `${model.shipsSunk} / ${model.numShips}`;
+        document.querySelector('.is-sunken').textContent = str;
     },
 };
 
@@ -158,6 +162,7 @@ const model = {
                 if (this.isSunk(ship)) {
                     view.displayMessage('ARRRGHH! You sank one of my ships!');
                     this.shipsSunk++;
+                    view.displaySunk();
                 }
                 return true;
             }
@@ -178,7 +183,7 @@ const model = {
 };
 
 const controller = {
-    topScore: [],
+    topScore: 0,
     guesses: 0,
     guessHistory: [],
     processGuess: function (guess) {
@@ -187,7 +192,7 @@ const controller = {
             for (let i = 0; i < this.guessHistory.length; i++) {
                 if (location === this.guessHistory[i]) {
                     return view.displayModal(
-                        'You already pick this location soldier, wake up and try again!'
+                        `You already pick this location soldier, wake up and try again!`
                     );
                 }
             }
@@ -196,7 +201,7 @@ const controller = {
             let hit = model.fire(location);
             if (hit && model.shipsSunk === model.numShips) {
                 view.displayMessage(
-                    'You sank all my ships in ' + this.guesses + ' guesses!'
+                    `You sank all my ships in ${this.guesses} guesses!`
                 );
             }
         }
