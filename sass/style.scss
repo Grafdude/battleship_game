@@ -59,10 +59,10 @@ body {
         grid-column: 1 / -1;
         justify-self: center;
         width: 100%;
-        // margin-bottom: 2rem;
+        height: 12rem;
 
         &-svg {
-            fill: $color-green;
+            fill: rgb(22, 141, 22);
             width: 100%;
         }
     }
@@ -140,7 +140,7 @@ body {
     cursor: pointer;
 
     &-fire {
-        padding: 0.9rem 1.8rem;
+        padding: 0.6rem 1.8rem;
         border-radius: 1.5rem;
         transition: all 0.25s;
         font-weight: bold;
@@ -155,6 +155,15 @@ body {
         &:hover {
             background: #ff7300;
         }
+    }
+
+    &__play-again {
+        margin-top: 1rem;
+        padding: 0.6rem 2rem;
+        border-radius: 1.5rem;
+        background: rgb(21 45 130);
+        border: 2px solid #375d71;
+        color: #fff;
     }
 }
 
@@ -380,9 +389,10 @@ body {
 
 .game-score {
     display: grid;
+
     width: 100%;
     color: $color-green;
-    grid-column: 1 / 3;
+    grid-column: 1 / -1;
     justify-self: center;
     font-size: 1.8rem;
 

@@ -6,10 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Battleship Game</title>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;700&display=swap"
-            rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;700&display=swap" rel="stylesheet"/>
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
@@ -21,7 +18,6 @@
                     </svg>
                 </div>
                 <div class="panel__message-area">
-                    Go ahead, shoot soldier! Let's see what you're made of.
                 </div>
                 <form>
                     <input
@@ -35,10 +31,6 @@
                         FIRE!🔥
                     </button>
                 </form>
-                <div class="game-score">
-                    <span class="game-score__high-score">high score: <span class="value">0</span></span>
-                    <span class="game-score__score">sunked ships: <span class="value is-sunken">0 / 3</span></span>
-                </div>  
             </div>
 
             <div class="grid-box">
@@ -52,67 +44,67 @@
                 <div class="col-label">6</div>
 
                 <div class="row-label">A</div>
-                <div id="00"></div>
-                <div id="01"></div>
-                <div id="02"></div>
-                <div id="03"></div>
-                <div id="04"></div>
-                <div id="05"></div>
-                <div id="06"></div>
+                <div id="00" class="grid-item"></div>
+                <div id="01" class="grid-item"></div>
+                <div id="02" class="grid-item"></div>
+                <div id="03" class="grid-item"></div>
+                <div id="04" class="grid-item"></div>
+                <div id="05" class="grid-item"></div>
+                <div id="06" class="grid-item"></div>
 
                 <div class="row-label">B</div>
-                <div id="10"></div>
-                <div id="11"></div>
-                <div id="12"></div>
-                <div id="13"></div>
-                <div id="14"></div>
-                <div id="15"></div>
-                <div id="16"></div>
+                <div id="10" class="grid-item"></div>
+                <div id="11" class="grid-item"></div>
+                <div id="12" class="grid-item"></div>
+                <div id="13" class="grid-item"></div>
+                <div id="14" class="grid-item"></div>
+                <div id="15" class="grid-item"></div>
+                <div id="16" class="grid-item"></div>
 
                 <div class="row-label">C</div>
-                <div id="20"></div>
-                <div id="21"></div>
-                <div id="22"></div>
-                <div id="23"></div>
-                <div id="24"></div>
-                <div id="25"></div>
-                <div id="26"></div>
+                <div id="20" class="grid-item"></div>
+                <div id="21" class="grid-item"></div>
+                <div id="22" class="grid-item"></div>
+                <div id="23" class="grid-item"></div>
+                <div id="24" class="grid-item"></div>
+                <div id="25" class="grid-item"></div>
+                <div id="26" class="grid-item"></div>
 
                 <div class="row-label">D</div>
-                <div id="30"></div>
-                <div id="31"></div>
-                <div id="32"></div>
-                <div id="33"></div>
-                <div id="34"></div>
-                <div id="35"></div>
-                <div id="36"></div>
+                <div id="30" class="grid-item"></div>
+                <div id="31" class="grid-item"></div>
+                <div id="32" class="grid-item"></div>
+                <div id="33" class="grid-item"></div>
+                <div id="34" class="grid-item"></div>
+                <div id="35" class="grid-item"></div>
+                <div id="36" class="grid-item"></div>
 
                 <div class="row-label">E</div>
-                <div id="40"></div>
-                <div id="41"></div>
-                <div id="42"></div>
-                <div id="43"></div>
-                <div id="44"></div>
-                <div id="45"></div>
-                <div id="46"></div>
+                <div id="40" class="grid-item"></div>
+                <div id="41" class="grid-item"></div>
+                <div id="42" class="grid-item"></div>
+                <div id="43" class="grid-item"></div>
+                <div id="44" class="grid-item"></div>
+                <div id="45" class="grid-item"></div>
+                <div id="46" class="grid-item"></div>
 
                 <div class="row-label">F</div>
-                <div id="50"></div>
-                <div id="51"></div>
-                <div id="52"></div>
-                <div id="53"></div>
-                <div id="54"></div>
-                <div id="55"></div>
-                <div id="56"></div>
+                <div id="50" class="grid-item"></div>
+                <div id="51" class="grid-item"></div>
+                <div id="52" class="grid-item"></div>
+                <div id="53" class="grid-item"></div>
+                <div id="54" class="grid-item"></div>
+                <div id="55" class="grid-item"></div>
+                <div id="56" class="grid-item"></div>
 
                 <div class="row-label">G</div>
-                <div id="60"></div>
-                <div id="61"></div>
-                <div id="62"></div>
-                <div id="63"></div>
-                <div id="64"></div>
-                <div id="65"></div>
-                <div id="66"></div>
+                <div id="60" class="grid-item"></div>
+                <div id="61" class="grid-item"></div>
+                <div id="62" class="grid-item"></div>
+                <div id="63" class="grid-item"></div>
+                <div id="64" class="grid-item"></div>
+                <div id="65" class="grid-item"></div>
+                <div id="66" class="grid-item"></div>
 
                 <div class="crosshair">
                     <div class="crosshair md"></div>
@@ -122,9 +114,14 @@
                         <div class="line-vertical tip"></div>
                     </div>
                 </div>
-            </div>      
+            </div>
+            <div class="game-score">
+                <span class="game-score__high-score">high score: <span class="value high-score">0</span></span>
+                <span class="game-score__score">sunked ships:
+                    <span class="value is-sunken">0 / 3</span></span>
+            </div>
         </div>
-        
+
         <div class="modal">
             <div class="modal-soldier">
                 <img src="img/soldier.png" alt="soldier" />

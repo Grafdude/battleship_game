@@ -16,7 +16,7 @@ const handleKeyPress = (e) => {
 
 const parseGuess = (guess) => {
     let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-    if (guess === null || guess.length !== 2) {
+    if (guess === null) {
         return view.displayModal(
             'Soldier! Enter a valid letter and number that is on the board!'
         );
@@ -51,6 +51,11 @@ const init = () => {
     const guessInput = document.getElementById('guessInput');
     guessInput.onkeypress = handleKeyPress;
     model.generateShipLocations();
+    view.displaySunk(0);
+    view.displayMessage(
+        `Let's see what you're made of soldier... Go ahead, shoot!`
+    );
+    view.resetGrid();
 };
 
 const view = {
@@ -85,9 +90,20 @@ const view = {
         modalTxt.textContent = msg;
         modal.classList.toggle('modal--show');
     },
-    displaySunk: function () {
-        let str = `${model.shipsSunk} / ${model.numShips}`;
+    displaySunk: function (sunk) {
+        let str = `${sunk} / ${model.numShips}`;
         document.querySelector('.is-sunken').textContent = str;
+    },
+    displayTopScore: function (score) {
+        document.querySelector('.high-score').textContent = score;
+    },
+    resetGrid: function () {
+        const grid = document.querySelectorAll('.grid-item');
+        for (const el of grid) {
+            if (el) {
+                el.innerHTML = '';
+            }
+        }
     },
 };
 
@@ -162,7 +178,7 @@ const model = {
                 if (this.isSunk(ship)) {
                     view.displayMessage('ARRRGHH! You sank one of my ships!');
                     this.shipsSunk++;
-                    view.displaySunk();
+                    view.displaySunk(this.shipsSunk);
                 }
                 return true;
             }
@@ -200,11 +216,28 @@ const controller = {
             this.guesses++;
             let hit = model.fire(location);
             if (hit && model.shipsSunk === model.numShips) {
+                let score = (48 - this.guesses) * 10;
+                if (score > this.topScore) {
+                    this.topScore = score;
+                    view.displayTopScore(score);
+                }
                 view.displayMessage(
-                    `You sank all my ships in ${this.guesses} guesses!`
+                    `You sank all my ships in ${this.guesses} guesses
+                     Your score is ${score}.
+                    `
                 );
+                this.endGame();
             }
         }
+    },
+    endGame: function () {
+        const messageArea = document.querySelector('.panel__message-area');
+        messageArea.insertAdjacentHTML(
+            'beforeend',
+            '<button class="btn btn__play-again">Play Again?</button>'
+        );
+        const reset = document.querySelector('.btn__play-again');
+        reset.addEventListener('click', init);
     },
 };
 
