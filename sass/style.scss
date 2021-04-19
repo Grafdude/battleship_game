@@ -1,5 +1,6 @@
 $color-green: greenyellow;
 $color-green-alpha: rgba(83, 175, 19, 0.2);
+$color-secondary: #ff9500;
 $crosshairwidth: 0.6rem;
 
 $bp-lg: 62.5em; //1000px
@@ -21,8 +22,7 @@ html {
 }
 
 body {
-    height: 100vh;
-    width: 100%;
+    height: 100%;
     font-size: 1.6rem;
     box-sizing: border-box;
     background: linear-gradient(
@@ -30,24 +30,24 @@ body {
             #030610 0%,
             rgba(31, 71, 105, 0.49) 41.51%,
             rgba(138, 123, 17, 0.4) 58.51%,
-            rgba(17, 36, 104, 0.13) 62.51%
+            rgba(17, 36, 104, 0.13) 62.51%,
+            #000 100%
         ),
         #000000;
 
     display: grid;
-    justify-content: center;
-    align-items: center;
+    place-items: center;
 }
 
 .ship {
     position: absolute;
-    top: 51%;
+    top: 56rem;
     left: -9%;
     fill: #02040e;
 
     &--2 {
         position: absolute;
-        top: 52.5%;
+        top: 57.5rem;
         left: 80%;
     }
 
@@ -85,6 +85,10 @@ body {
         width: 100%;
         height: 12rem;
 
+        @media only screen and (max-width: $bp-med) {
+            display: none;
+        }
+
         &-svg {
             fill: #d6b925;
             width: 100%;
@@ -101,7 +105,8 @@ body {
         text-align: center;
         align-self: center;
 
-        @media only screen and (max-width: $bp-sm) {
+        @media only screen and (max-width: $bp-med) {
+            padding: 4rem 4vw;
             grid-column: 1 / 3;
             // grid-row: 1 / 2;
             font-size: 2rem;
@@ -117,6 +122,12 @@ body {
 
         grid-column: 2 / 3;
         grid-row: 2 / 3;
+
+        @media only screen and (max-width: $bp-med) {
+            grid-column: 1 / 3;
+            grid-row: 2 / 3;
+            text-align: center;
+        }
 
         @media only screen and (max-width: $bp-sm) {
             text-align: center;
@@ -202,24 +213,14 @@ body {
     grid-row: 2 / 3;
 
     @media only screen and (max-width: $bp-lg) {
-        grid-template-columns: 6rem repeat(7, 9rem);
-        grid-template-rows: 8rem repeat(7, minmax(auto, 9rem));
+        grid-template-columns: 6rem repeat(7, 10vw);
+        grid-template-rows: 8rem repeat(7, minmax(auto, 10vw));
     }
 
-    @media only screen and (max-width: $bp-med) {
-        grid-template-columns: 4.5rem repeat(7, 7rem);
-        grid-template-rows: 8rem repeat(7, minmax(auto, 7rem));
-    }
-
-    @media only screen and (max-width: $bp-sm) {
-        grid-template-columns: 4.5rem repeat(7, 5.5rem);
-        grid-template-rows: 8rem repeat(7, minmax(auto, 5.5rem));
-    }
-
-    @media only screen and (max-width: $bp-xsm) {
-        grid-template-columns: 4rem repeat(7, 4.5rem);
-        grid-template-rows: 8rem repeat(7, minmax(auto, 4.5rem));
-    }
+    // @media only screen and (max-width: $bp-med) {
+    //     grid-template-columns: 4.5rem repeat(7, 12vw);
+    //     grid-template-rows: 8rem repeat(7, minmax(auto, 12vw));
+    // }
 
     & > *:nth-of-type(1n + 10) {
         border: 1px solid rgba($color-green, 0.3);
@@ -362,7 +363,7 @@ body {
     width: 70%;
     height: auto;
     z-index: 10;
-    fill: rgb(83, 175, 19);
+    fill: $color-green;
 }
 
 .modal {
@@ -384,9 +385,6 @@ body {
     padding: 6rem;
     z-index: 50;
 
-    // @media only screen and (max-width: $bp-med) {
-    // }
-
     &-close {
         position: absolute;
         top: -1rem;
@@ -402,7 +400,7 @@ body {
     &-msg {
         font-size: 2.8rem;
         text-align: center;
-        color: orangered;
+        color: $color-secondary;
     }
 
     &-soldier {
@@ -432,7 +430,7 @@ body {
     font-size: 1.8rem;
 
     span {
-        color: rgb(255, 145, 0);
+        color: $color-secondary;
         display: inline-block;
         padding: 0.5rem 2rem;
         border-radius: 0.5rem;
@@ -449,7 +447,7 @@ body {
 
     &__score {
         grid-column: 2 / 3;
-        justify-self: end;
+        justify-self: center;
     }
 
     &__high-score {
