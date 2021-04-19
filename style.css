@@ -9,26 +9,29 @@
 html {
   font-size: 62.5%;
   font-family: "Dosis", sans-serif;
+  height: 100%;
 }
 
 body {
   height: 100%;
   font-size: 1.6rem;
   box-sizing: border-box;
-  background: linear-gradient(to bottom, #030610 0%, rgba(31, 71, 105, 0.49) 41.51%, rgba(138, 123, 17, 0.4) 58.51%, rgba(17, 36, 104, 0.13) 62.51%, #000 100%), #000000;
+  background: linear-gradient(to bottom, #030610 0%, rgba(31, 71, 105, 0.49) 42rem, rgba(138, 123, 17, 0.4) 50rem, rgba(17, 36, 104, 0.13) 55rem), #000000 no-repeat;
+  background-attachment: fixed;
+  position: relative;
   display: grid;
   place-items: center;
 }
 
 .ship {
   position: absolute;
-  top: 56rem;
+  top: 43rem;
   left: -9%;
   fill: #02040e;
 }
 .ship--2 {
   position: absolute;
-  top: 57.5rem;
+  top: 45.5rem;
   left: 80%;
 }
 .ship__svg {

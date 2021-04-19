@@ -174,7 +174,7 @@ const model = {
             if (index >= 0) {
                 ship.hits[index] = 'hit';
                 view.displayHit(guess);
-                view.displayMessage('OUCH! That was a big HIT soldier!');
+                view.displayMessage('OUCH! That was a big hit soldier!');
                 if (this.isSunk(ship)) {
                     view.displayMessage('ARRRGHH! You sank one of my ships!');
                     this.shipsSunk++;
@@ -222,7 +222,7 @@ const controller = {
                     view.displayTopScore(score);
                 }
                 view.displayMessage(
-                    `You sank all my ships in ${this.guesses} guesses
+                    `You sank ${mode.shipLength} ships in ${this.guesses} guesses
                      Your score is ${score}.
                     `
                 );
