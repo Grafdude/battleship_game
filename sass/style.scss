@@ -43,13 +43,13 @@ body {
 }
 
 .ship {
-    position: absolute;
+    position: fixed;
     top: 43rem;
     left: -9%;
     fill: #02040e;
 
     &--2 {
-        position: absolute;
+        position: fixed;
         top: 45.5rem;
         left: 80%;
     }
@@ -78,8 +78,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
     grid-column: 2 / 4;
-    padding-left: 4rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3vh;
 
     &__heading {
         fill: $color-green;
@@ -211,6 +210,7 @@ body {
     grid-template-rows: 6rem repeat(7, minmax(auto, 9.4rem));
     justify-content: center;
     position: relative;
+    z-index: 100;
 
     grid-column: 2 / 4;
     grid-row: 2 / 3;
@@ -218,12 +218,8 @@ body {
     @media only screen and (max-width: $bp-lg) {
         grid-template-columns: 6rem repeat(7, 10vw);
         grid-template-rows: 8rem repeat(7, minmax(auto, 10vw));
+        margin-right: 4rem;
     }
-
-    // @media only screen and (max-width: $bp-med) {
-    //     grid-template-columns: 4.5rem repeat(7, 12vw);
-    //     grid-template-rows: 8rem repeat(7, minmax(auto, 12vw));
-    // }
 
     & > *:nth-of-type(1n + 10) {
         border: 1px solid rgba($color-green, 0.3);
@@ -232,9 +228,6 @@ body {
         font-size: 2.6rem;
         color: $color-green;
     }
-
-    // & > *:not(.row-label, .col-label, :first-child) {
-    // }
 
     & > .row-label {
         border: 1px solid transparent;
@@ -253,7 +246,7 @@ body {
         border-radius: 50%;
         background-color: $color-green-alpha;
         border: $crosshairwidth solid $color-green-alpha;
-        z-index: 2;
+        z-index: -1;
 
         grid-row: 2 / -1;
         grid-column: 2 / -1;

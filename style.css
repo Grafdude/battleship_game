@@ -24,13 +24,13 @@ body {
 }
 
 .ship {
-  position: absolute;
+  position: fixed;
   top: 43rem;
   left: -9%;
   fill: #02040e;
 }
 .ship--2 {
-  position: absolute;
+  position: fixed;
   top: 45.5rem;
   left: 80%;
 }
@@ -55,8 +55,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   grid-column: 2/4;
-  padding-left: 4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3vh;
 }
 .panel__heading {
   fill: greenyellow;
@@ -181,6 +180,7 @@ body {
   grid-template-rows: 6rem repeat(7, minmax(auto, 9.4rem));
   justify-content: center;
   position: relative;
+  z-index: 100;
   grid-column: 2/4;
   grid-row: 2/3;
 }
@@ -188,6 +188,7 @@ body {
   .grid-box {
     grid-template-columns: 6rem repeat(7, 10vw);
     grid-template-rows: 8rem repeat(7, minmax(auto, 10vw));
+    margin-right: 4rem;
   }
 }
 .grid-box > *:nth-of-type(1n + 10) {
@@ -213,7 +214,7 @@ body {
   border-radius: 50%;
   background-color: rgba(83, 175, 19, 0.2);
   border: 0.6rem solid rgba(83, 175, 19, 0.2);
-  z-index: 2;
+  z-index: -1;
   grid-row: 2/-1;
   grid-column: 2/-1;
 }

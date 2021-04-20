@@ -1,9 +1,24 @@
-const handleFireButton = () => {
-    const guessInput = document.getElementById('guessInput');
-    let guess = guessInput.value;
-    controller.processGuess(guess);
+// const handleFireButton = () => {
+//     const guessInput = document.getElementById('guessInput');
+//     let guess = guessInput.value;
+//     controller.processGuess(guess);
 
-    guessInput.value = ''; //this line resets the form input element to be the empty string. That way you don't have to explicitly select the text and delete it before entering the next guess, which would be annoying.
+//     guessInput.value = ''; //this line resets the form input element to be the empty string. That way you don't have to explicitly select the text and delete it before entering the next guess, which would be annoying.
+// };
+
+const handleGridClick = () => {
+    const gridBoard = document.querySelectorAll('.grid-item');
+    for (const grid of gridBoard) {
+        grid.addEventListener('click', function () {
+            const guess = Number(grid.id);
+            model.fire(guess);
+        });
+    }
+};
+
+const handleFireButton = (e) => {
+    const guessInput = handleGridClick();
+    controller.processGuess(guessInput);
 };
 
 const handleKeyPress = (e) => {
@@ -56,6 +71,7 @@ const init = () => {
         `Let's see what you're made of soldier... Go ahead, shoot!`
     );
     view.resetGrid();
+    handleGridClick();
 };
 
 const view = {
@@ -203,7 +219,8 @@ const controller = {
     guesses: 0,
     guessHistory: [],
     processGuess: function (guess) {
-        let location = parseGuess(guess);
+        // let location = parseGuess(guess);
+        let location = handleGridClick();
         if (location) {
             for (let i = 0; i < this.guessHistory.length; i++) {
                 if (location === this.guessHistory[i]) {
@@ -216,7 +233,7 @@ const controller = {
             this.guesses++;
             let hit = model.fire(location);
             if (hit && model.shipsSunk === model.numShips) {
-                let score = (48 - this.guesses) * 10;
+                let score = (48 - this.guesses) * 14;
                 if (score > this.topScore) {
                     this.topScore = score;
                     view.displayTopScore(score);
