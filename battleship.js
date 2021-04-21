@@ -1,24 +1,8 @@
-// const handleFireButton = () => {
-//     const guessInput = document.getElementById('guessInput');
-//     let guess = guessInput.value;
-//     controller.processGuess(guess);
-
-//     guessInput.value = ''; //this line resets the form input element to be the empty string. That way you don't have to explicitly select the text and delete it before entering the next guess, which would be annoying.
-// };
-
-const handleGridClick = () => {
-    const gridBoard = document.querySelectorAll('.grid-item');
-    for (const grid of gridBoard) {
-        grid.addEventListener('click', function () {
-            const guess = Number(grid.id);
-            model.fire(guess);
-        });
-    }
-};
-
-const handleFireButton = (e) => {
-    const guessInput = handleGridClick();
-    controller.processGuess(guessInput);
+const handleFireButton = () => {
+    const guessInput = document.getElementById('guessInput');
+    let guess = guessInput.value;
+    controller.processGuess(guess);
+    guessInput.value = ''; //this line resets the form input element to be the empty string. That way you don't have to explicitly select the text and delete it before entering the next guess, which would be annoying.
 };
 
 const handleKeyPress = (e) => {
@@ -71,7 +55,6 @@ const init = () => {
         `Let's see what you're made of soldier... Go ahead, shoot!`
     );
     view.resetGrid();
-    handleGridClick();
 };
 
 const view = {
@@ -219,8 +202,7 @@ const controller = {
     guesses: 0,
     guessHistory: [],
     processGuess: function (guess) {
-        // let location = parseGuess(guess);
-        let location = handleGridClick();
+        let location = parseGuess(guess);
         if (location) {
             for (let i = 0; i < this.guessHistory.length; i++) {
                 if (location === this.guessHistory[i]) {
@@ -239,7 +221,7 @@ const controller = {
                     view.displayTopScore(score);
                 }
                 view.displayMessage(
-                    `You sank ${mode.shipLength} ships in ${this.guesses} guesses
+                    `You sank ${model.shipLength} ships in ${this.guesses} guesses
                      Your score is ${score}.
                     `
                 );
