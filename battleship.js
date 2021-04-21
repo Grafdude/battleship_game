@@ -1,24 +1,19 @@
-// const handleFireButton = () => {
-//     const guessInput = document.getElementById('guessInput');
-//     let guess = guessInput.value;
-//     controller.processGuess(guess);
+const handleFireButton = () => {
+    const guessInput = document.getElementById('guessInput');
+    let guess = guessInput.value;
+    controller.processGuess(guess);
 
-//     guessInput.value = ''; //this line resets the form input element to be the empty string. That way you don't have to explicitly select the text and delete it before entering the next guess, which would be annoying.
-// };
+    guessInput.value = ''; //this line resets the form input element to be the empty string. That way you don't have to explicitly select the text and delete it before entering the next guess, which would be annoying.
+};
 
 const handleGridClick = () => {
     const gridBoard = document.querySelectorAll('.grid-item');
     for (const grid of gridBoard) {
         grid.addEventListener('click', function () {
-            const guess = Number(grid.id);
-            model.fire(guess);
+            const guess = grid.id;
+            controller.processGuess(guess);
         });
     }
-};
-
-const handleFireButton = (e) => {
-    const guessInput = handleGridClick();
-    controller.processGuess(guessInput);
 };
 
 const handleKeyPress = (e) => {
@@ -30,16 +25,30 @@ const handleKeyPress = (e) => {
 };
 
 const parseGuess = (guess) => {
-    let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+    const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
     if (guess === null) {
         return view.displayModal(
             'Soldier! Enter a valid letter and number that is on the board!'
         );
     } else {
-        firstChar = guess.charAt(0);
-        firstChar = firstChar.toUpperCase();
-        let row = alphabet.indexOf(firstChar); //searches for a match in array then returns the index of match
-        let column = guess.charAt(1);
+        const guessArr = guess.split('').map((val) => {
+            if (isNaN(Number(val))) return val.toUpperCase();
+            return val;
+        });
+        const row = isNaN(Number(guessArr[0]))
+            ? alphabet.indexOf(guessArr[0])
+            : guessArr[0];
+        const column = guessArr[1];
+        console.log(row, column);
+
+        // const firstChar = guess.toString().slice(0);
+        // console.log(firstChar);
+        // const row =
+        //     firstChar === 'string'
+        //         ? alphabet.indexOf(guess.slice(0).toUpperCase())
+        //         : Number(guess[0]);
+        // const column = guess[1];
+        // console.log(row, column);
 
         if (isNaN(row) || isNaN(column)) {
             return view.displayModal(
@@ -55,6 +64,7 @@ const parseGuess = (guess) => {
                 'That is off the board! You can shoot better than that soldier!'
             );
         }
+        console.log(row + column);
         return row + column;
     }
     return;
@@ -219,8 +229,7 @@ const controller = {
     guesses: 0,
     guessHistory: [],
     processGuess: function (guess) {
-        // let location = parseGuess(guess);
-        let location = handleGridClick();
+        let location = parseGuess(guess);
         if (location) {
             for (let i = 0; i < this.guessHistory.length; i++) {
                 if (location === this.guessHistory[i]) {
@@ -239,7 +248,7 @@ const controller = {
                     view.displayTopScore(score);
                 }
                 view.displayMessage(
-                    `You sank ${mode.shipLength} ships in ${this.guesses} guesses
+                    `You sank ${model.shipLength} ships in ${this.guesses} guesses
                      Your score is ${score}.
                     `
                 );
