@@ -41,15 +41,6 @@ const parseGuess = (guess) => {
         const column = guessArr[1];
         console.log(row, column);
 
-        // const firstChar = guess.toString().slice(0);
-        // console.log(firstChar);
-        // const row =
-        //     firstChar === 'string'
-        //         ? alphabet.indexOf(guess.slice(0).toUpperCase())
-        //         : Number(guess[0]);
-        // const column = guess[1];
-        // console.log(row, column);
-
         if (isNaN(row) || isNaN(column)) {
             return view.displayModal(
                 'That number is not on the board!. Get yourself together soldier!'
@@ -87,7 +78,7 @@ const init = () => {
 const view = {
     displayMessage: function (msg) {
         let messageArea = document.querySelector('.panel__message-area');
-        messageArea.innerHTML = msg;
+        messageArea.textContent = msg;
     },
 
     displayHit: function (location) {

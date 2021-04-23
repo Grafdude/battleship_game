@@ -16,7 +16,7 @@ body {
   height: 100%;
   font-size: 1.6rem;
   box-sizing: border-box;
-  background: linear-gradient(to bottom, #030610 0%, rgba(31, 71, 105, 0.49) 42rem, rgba(138, 123, 17, 0.4) 50rem, rgba(17, 36, 104, 0.13) 55rem), #000000 no-repeat;
+  background: linear-gradient(to bottom, #030610 0%, rgba(31, 71, 105, 0.49) 29rem, rgba(138, 100, 17, 0.4) 50rem, rgba(17, 36, 104, 0.13) 54rem, rgba(17, 36, 104, 0) 55rem), #02040e no-repeat;
   background-attachment: fixed;
   position: relative;
   display: grid;
