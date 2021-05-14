@@ -46,6 +46,7 @@ const parseGuess = (guess) => {
 
 const init = () => {
     const fireButton = document.getElementById('fireButton');
+    controller.guessHistory = [];
     fireButton.onclick = handleFireButton;
     const guessInput = document.getElementById('guessInput');
     guessInput.onkeypress = handleKeyPress;
