@@ -51,6 +51,7 @@ const init = () => {
     const guessInput = document.getElementById('guessInput');
     guessInput.onkeypress = handleKeyPress;
     model.generateShipLocations();
+    model.shipsSunk = 0;
     view.displaySunk(0);
     view.displayMessage(
         `Let's see what you're made of soldier... Go ahead, shoot!`
