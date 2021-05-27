@@ -1,143 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Battleship Game</title>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;700&display=swap" rel="stylesheet"/>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-        <div class="board">
-            <div class="panel">
-                <div class="panel__heading">
-                    <svg class="panel__heading-svg">
-                        <use xlink:href="img/sprite.svg#heading-battleship"></use>
-                    </svg>
-                </div>
-                <div class="panel__message-area">
-                </div>
-                <form>
-                    <input
-                        type="text"
-                        id="guessInput"
-                        placeholder="A0"
-                        maxlength="2"
-                        autocomplete="off"
-                    />
-                    <button type="button" id="fireButton" class="btn btn-fire">
-                        FIRE!🔥
-                    </button>
-                </form>
-            </div>
-
-            <div class="grid-box">
-                <div></div>
-                <div class="col-label">0</div>
-                <div class="col-label">1</div>
-                <div class="col-label">2</div>
-                <div class="col-label">3</div>
-                <div class="col-label">4</div>
-                <div class="col-label">5</div>
-                <div class="col-label">6</div>
-
-                <div class="row-label">A</div>
-                <div id="00" class="grid-item"></div>
-                <div id="01" class="grid-item"></div>
-                <div id="02" class="grid-item"></div>
-                <div id="03" class="grid-item"></div>
-                <div id="04" class="grid-item"></div>
-                <div id="05" class="grid-item"></div>
-                <div id="06" class="grid-item"></div>
-
-                <div class="row-label">B</div>
-                <div id="10" class="grid-item"></div>
-                <div id="11" class="grid-item"></div>
-                <div id="12" class="grid-item"></div>
-                <div id="13" class="grid-item"></div>
-                <div id="14" class="grid-item"></div>
-                <div id="15" class="grid-item"></div>
-                <div id="16" class="grid-item"></div>
-
-                <div class="row-label">C</div>
-                <div id="20" class="grid-item"></div>
-                <div id="21" class="grid-item"></div>
-                <div id="22" class="grid-item"></div>
-                <div id="23" class="grid-item"></div>
-                <div id="24" class="grid-item"></div>
-                <div id="25" class="grid-item"></div>
-                <div id="26" class="grid-item"></div>
-
-                <div class="row-label">D</div>
-                <div id="30" class="grid-item"></div>
-                <div id="31" class="grid-item"></div>
-                <div id="32" class="grid-item"></div>
-                <div id="33" class="grid-item"></div>
-                <div id="34" class="grid-item"></div>
-                <div id="35" class="grid-item"></div>
-                <div id="36" class="grid-item"></div>
-
-                <div class="row-label">E</div>
-                <div id="40" class="grid-item"></div>
-                <div id="41" class="grid-item"></div>
-                <div id="42" class="grid-item"></div>
-                <div id="43" class="grid-item"></div>
-                <div id="44" class="grid-item"></div>
-                <div id="45" class="grid-item"></div>
-                <div id="46" class="grid-item"></div>
-
-                <div class="row-label">F</div>
-                <div id="50" class="grid-item"></div>
-                <div id="51" class="grid-item"></div>
-                <div id="52" class="grid-item"></div>
-                <div id="53" class="grid-item"></div>
-                <div id="54" class="grid-item"></div>
-                <div id="55" class="grid-item"></div>
-                <div id="56" class="grid-item"></div>
-
-                <div class="row-label">G</div>
-                <div id="60" class="grid-item"></div>
-                <div id="61" class="grid-item"></div>
-                <div id="62" class="grid-item"></div>
-                <div id="63" class="grid-item"></div>
-                <div id="64" class="grid-item"></div>
-                <div id="65" class="grid-item"></div>
-                <div id="66" class="grid-item"></div>
-
-                <div class="crosshair">
-                    <div class="crosshair md"></div>
-                    <div class="crosshair sm"></div>
-                    <div class="crosshair line">
-                        <div class="line-vertical"></div>
-                        <div class="line-vertical line-vertical__tip"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="game-score">
-                <span class="game-score__high-score">Your highest score: <span class="value high-score">0</span></span>
-                <span class="game-score__score">ships sunked:<span class="value is-sunken">0 / 3</span></span>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battleship Game</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="board">
+      <div class="panel">
+        <div class="panel__heading">
+          <svg class="panel__heading-svg">
+            <use xlink:href="img/sprite.svg#heading-battleship"></use>
+          </svg>
         </div>
+        <div class="panel__message-area"></div>
+        <form>
+          <input
+            type="text"
+            id="guessInput"
+            placeholder="A0"
+            maxlength="2"
+            autocomplete="off"
+          />
+          <button type="button" id="fireButton" class="btn btn-fire">
+            FIRE!🔥
+          </button>
+        </form>
+      </div>
 
-        <div class="modal">
-            <div class="modal-soldier">
-                <img src="img/soldier.png" alt="soldier" />
-            </div>
-            <button class="modal-close btn">&times;</button>
-            <h3 class="modal-msg"></h3>
+      <div class="grid-box">
+        <div></div>
+        <div class="col-label">0</div>
+        <div class="col-label">1</div>
+        <div class="col-label">2</div>
+        <div class="col-label">3</div>
+        <div class="col-label">4</div>
+        <div class="col-label">5</div>
+        <div class="col-label">6</div>
+
+        <div class="row-label">A</div>
+        <div id="00" class="grid-item"></div>
+        <div id="01" class="grid-item"></div>
+        <div id="02" class="grid-item"></div>
+        <div id="03" class="grid-item"></div>
+        <div id="04" class="grid-item"></div>
+        <div id="05" class="grid-item"></div>
+        <div id="06" class="grid-item"></div>
+
+        <div class="row-label">B</div>
+        <div id="10" class="grid-item"></div>
+        <div id="11" class="grid-item"></div>
+        <div id="12" class="grid-item"></div>
+        <div id="13" class="grid-item"></div>
+        <div id="14" class="grid-item"></div>
+        <div id="15" class="grid-item"></div>
+        <div id="16" class="grid-item"></div>
+
+        <div class="row-label">C</div>
+        <div id="20" class="grid-item"></div>
+        <div id="21" class="grid-item"></div>
+        <div id="22" class="grid-item"></div>
+        <div id="23" class="grid-item"></div>
+        <div id="24" class="grid-item"></div>
+        <div id="25" class="grid-item"></div>
+        <div id="26" class="grid-item"></div>
+
+        <div class="row-label">D</div>
+        <div id="30" class="grid-item"></div>
+        <div id="31" class="grid-item"></div>
+        <div id="32" class="grid-item"></div>
+        <div id="33" class="grid-item"></div>
+        <div id="34" class="grid-item"></div>
+        <div id="35" class="grid-item"></div>
+        <div id="36" class="grid-item"></div>
+
+        <div class="row-label">E</div>
+        <div id="40" class="grid-item"></div>
+        <div id="41" class="grid-item"></div>
+        <div id="42" class="grid-item"></div>
+        <div id="43" class="grid-item"></div>
+        <div id="44" class="grid-item"></div>
+        <div id="45" class="grid-item"></div>
+        <div id="46" class="grid-item"></div>
+
+        <div class="row-label">F</div>
+        <div id="50" class="grid-item"></div>
+        <div id="51" class="grid-item"></div>
+        <div id="52" class="grid-item"></div>
+        <div id="53" class="grid-item"></div>
+        <div id="54" class="grid-item"></div>
+        <div id="55" class="grid-item"></div>
+        <div id="56" class="grid-item"></div>
+
+        <div class="row-label">G</div>
+        <div id="60" class="grid-item"></div>
+        <div id="61" class="grid-item"></div>
+        <div id="62" class="grid-item"></div>
+        <div id="63" class="grid-item"></div>
+        <div id="64" class="grid-item"></div>
+        <div id="65" class="grid-item"></div>
+        <div id="66" class="grid-item"></div>
+
+        <div class="crosshair">
+          <div class="crosshair md"></div>
+          <div class="crosshair sm"></div>
+          <div class="crosshair line">
+            <div class="line-vertical"></div>
+            <div class="line-vertical line-vertical__tip"></div>
+          </div>
         </div>
-        <div class="ship">
-            <svg class="ship__svg">
-                <use xlink:href="img/sprite.svg#ship-mint"></use>
-            </svg>
-        </div>
-        <div class="ship--2">
-            <svg class="ship__svg--2">
-                <use xlink:href="img/sprite.svg#ship-mint"></use>
-            </svg>
-        </div>
-        <script src="battleship.js"></script>
-    </body>
+      </div>
+      <div class="game-score">
+        <span class="game-score__high-score"
+          >Your highest score: <span class="value high-score">0</span></span
+        >
+        <span class="game-score__score"
+          >ships sunked:<span class="value is-sunken">0 / 3</span></span
+        >
+      </div>
+    </div>
+
+    <div class="modal">
+      <div class="modal-soldier">
+        <img src="img/soldier.png" alt="soldier" />
+      </div>
+      <button class="modal-close btn">&times;</button>
+      <h3 class="modal-msg"></h3>
+    </div>
+    <div class="ship">
+      <svg class="ship__svg">
+        <use xlink:href="img/sprite.svg#ship-mint"></use>
+      </svg>
+    </div>
+    <div class="ship--2">
+      <svg class="ship__svg--2">
+        <use xlink:href="img/sprite.svg#ship-mint"></use>
+      </svg>
+    </div>
+    <script src="battleship.js"></script>
+  </body>
 </html>

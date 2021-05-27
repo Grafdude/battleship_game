@@ -1,27 +1,19 @@
 const gridBoard = document.querySelector('.grid-box');
 
+gridBoard.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.grid-item');
+  if (clicked) {
+    const guess = clicked.getAttribute('id');
+    controller.processGuess(guess);
+  }
+});
+
 const handleFireButton = () => {
   const guessInput = document.getElementById('guessInput');
   let guess = guessInput.value;
   controller.processGuess(guess);
   guessInput.value = ''; //this line resets the form input element to be the empty string. That way you don't have to explicitly select the text and delete it before entering the next guess, which would be annoying.
 };
-
-// const handleGridClick = () {
-//   const gridBoard = document.querySelectorAll('.grid-item');
-//   for (const grid of gridBoard) {
-//     grid.addEventListener('click', function () {
-//       const guess = grid.id;
-//       controller.processGuess(guess);
-//     });
-//   }
-// };
-gridBoard.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.grid-item');
-  if (clicked) {
-    console.log(clicked.getAttribute('id'));
-  }
-});
 
 const handleKeyPress = (e) => {
   const fireButton = document.getElementById('fireButton');
@@ -71,6 +63,7 @@ const parseGuess = (guess) => {
 const init = () => {
   const fireButton = document.getElementById('fireButton');
   controller.guessHistory = [];
+  controller.guesses = 0;
   fireButton.onclick = handleFireButton;
   const guessInput = document.getElementById('guessInput');
   guessInput.onkeypress = handleKeyPress;
@@ -81,6 +74,7 @@ const init = () => {
     `Let's see what you're made of soldier... Go ahead, shoot!`
   );
   view.resetGrid();
+  model.ships.forEach((ship) => (ship.hits = ['', '', '']));
 };
 
 const view = {
@@ -156,7 +150,7 @@ const model = {
   },
 
   generateShip: function () {
-    let direction = Math.floor(Math.random() * 2);
+    const direction = Math.floor(Math.random() * 2);
     let row, col;
 
     if (direction === 1) {

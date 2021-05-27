@@ -29,6 +29,11 @@ body {
   left: -9%;
   fill: #02040e;
 }
+@media only screen and (max-width: 43.75em) {
+  .ship {
+    left: -45%;
+  }
+}
 .ship--2 {
   position: fixed;
   top: 45.5rem;
@@ -56,6 +61,11 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   grid-column: 2/4;
   margin-bottom: 3vh;
+}
+@media only screen and (max-width: 43.75em) {
+  .panel {
+    grid-template-rows: 8rem auto;
+  }
 }
 .panel__heading {
   fill: greenyellow;
