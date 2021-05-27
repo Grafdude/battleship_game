@@ -2,6 +2,7 @@ const handleFireButton = () => {
     const guessInput = document.getElementById('guessInput');
     let guess = guessInput.value;
     controller.processGuess(guess);
+<<<<<<< HEAD
 
     guessInput.value = ''; //this line resets the form input element to be the empty string. That way you don't have to explicitly select the text and delete it before entering the next guess, which would be annoying.
 };
@@ -16,6 +17,11 @@ const handleGridClick = () => {
     }
 };
 
+=======
+    guessInput.value = ''; //this line resets the form input element to be the empty string. That way you don't have to explicitly select the text and delete it before entering the next guess, which would be annoying.
+};
+
+>>>>>>> 1eabbbc8b81a2265d202443f03a99437e741973d
 const handleKeyPress = (e) => {
     const fireButton = document.getElementById('fireButton');
     if (e.keyCode === 13) {
@@ -63,16 +69,17 @@ const parseGuess = (guess) => {
 
 const init = () => {
     const fireButton = document.getElementById('fireButton');
+    controller.guessHistory = [];
     fireButton.onclick = handleFireButton;
     const guessInput = document.getElementById('guessInput');
     guessInput.onkeypress = handleKeyPress;
     model.generateShipLocations();
+    model.shipsSunk = 0;
     view.displaySunk(0);
     view.displayMessage(
         `Let's see what you're made of soldier... Go ahead, shoot!`
     );
     view.resetGrid();
-    handleGridClick();
 };
 
 const view = {
