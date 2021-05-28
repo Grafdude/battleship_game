@@ -38,7 +38,6 @@ const parseGuess = (guess) => {
       ? alphabet.indexOf(guessArr[0])
       : guessArr[0];
     const column = guessArr[1];
-    console.log(row, column);
 
     if (isNaN(row) || isNaN(column)) {
       return view.displayModal(
@@ -54,7 +53,6 @@ const parseGuess = (guess) => {
         'That is off the board! You can shoot better than that soldier!'
       );
     }
-    console.log(row + column);
     return row + column;
   }
   return;
