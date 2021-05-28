@@ -8,6 +8,10 @@ $bp-med: 43.75em; //700px
 $bp-sm: 33.75em; //540px
 $bp-xsm: 25em; //400px
 
+@media only screen and (max-width: $bp-med) {
+  $crosshairwidth: 0.4rem;
+}
+
 *,
 *::before,
 *::after {
@@ -93,15 +97,13 @@ body {
     grid-column: 1 / -1;
     justify-self: center;
     width: 100%;
-    height: 12rem;
-
-    @media only screen and (max-width: $bp-med) {
-      display: none;
-    }
+    // height: 12rem;
 
     &-svg {
       fill: #d6b925;
       width: 100%;
+
+      padding: 0 3rem;
     }
   }
 
@@ -116,7 +118,6 @@ body {
     align-self: center;
 
     @media only screen and (max-width: $bp-med) {
-      padding: 4rem 4vw;
       grid-column: 1 / 3;
       // grid-row: 1 / 2;
       font-size: 2rem;
@@ -235,6 +236,7 @@ body {
     place-items: center;
     font-size: 2.6rem;
     color: $color-green;
+    cursor: pointer;
   }
 
   & > .row-label {
