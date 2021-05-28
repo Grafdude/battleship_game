@@ -16,7 +16,7 @@ body {
   height: 100%;
   font-size: 1.6rem;
   box-sizing: border-box;
-  background: linear-gradient(to bottom, #030610 0%, rgba(31, 71, 105, 0.49) 42rem, rgba(138, 123, 17, 0.4) 50rem, rgba(17, 36, 104, 0.13) 55rem), #000000 no-repeat;
+  background: linear-gradient(to bottom, #030610 0%, rgba(31, 71, 105, 0.49) 29rem, rgba(138, 100, 17, 0.4) 50rem, rgba(17, 36, 104, 0.13) 54rem, rgba(17, 36, 104, 0) 55rem), #02040e no-repeat;
   background-attachment: fixed;
   position: relative;
   display: grid;
@@ -28,6 +28,11 @@ body {
   top: 43rem;
   left: -9%;
   fill: #02040e;
+}
+@media only screen and (max-width: 43.75em) {
+  .ship {
+    left: -45%;
+  }
 }
 .ship--2 {
   position: fixed;
@@ -57,21 +62,21 @@ body {
   grid-column: 2/4;
   margin-bottom: 3vh;
 }
+@media only screen and (max-width: 43.75em) {
+  .panel {
+    grid-template-rows: 8rem auto;
+  }
+}
 .panel__heading {
   fill: greenyellow;
   grid-column: 1/-1;
   justify-self: center;
   width: 100%;
-  height: 12rem;
-}
-@media only screen and (max-width: 43.75em) {
-  .panel__heading {
-    display: none;
-  }
 }
 .panel__heading-svg {
   fill: #d6b925;
   width: 100%;
+  padding: 0 3rem;
 }
 .panel__message-area {
   grid-column: 1/2;
@@ -84,7 +89,6 @@ body {
 }
 @media only screen and (max-width: 43.75em) {
   .panel__message-area {
-    padding: 4rem 4vw;
     grid-column: 1/3;
     font-size: 2rem;
     text-align: center;
@@ -197,6 +201,7 @@ body {
   place-items: center;
   font-size: 2.6rem;
   color: greenyellow;
+  cursor: pointer;
 }
 .grid-box > .row-label {
   border: 1px solid transparent;
